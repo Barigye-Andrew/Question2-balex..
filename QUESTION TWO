@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Balex {
+
+    // Define the courses class
+    static class Courses {
+        String courseID;
+        String courseName;
+        int tuition;
+
+        Courses(String courseID, String courseName, int tuition) {
+            this.courseID = courseID;
+            this.courseName = courseName;
+            this.tuition = tuition;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create course objects
+        Courses[] courses = {
+            new Courses("BSE", "Software Engineering", 900000),
+            new Courses("BIT", "Information Technology", 750000),
+            new Courses("BCS", "Computer Science", 800000),
+            new Courses("BCE", "Computer Engineering", 950000)
+        };
+
+        // Scanner for user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter CourseID:");
+        String inputCourseID = scanner.nextLine().toUpperCase();
+
+        // Flag to check if course is found
+        boolean courseFound = false;
+
+        // Search for the course by CourseID
+        for (Courses course : courses) {
+            if (course.courseID.equals(inputCourseID)) {
+                System.out.println("Course Name: " + course.courseName);
+                System.out.println("Tuition: " + course.tuition);
+                courseFound = true;
+                break;
+            }
+        }
+
+        // If course not found, display error message
+        if (!courseFound) {
+            System.out.println("Wrong CourseID details");
+        }
+
+        // Close scanner
+        scanner.close();
+    }
+}
